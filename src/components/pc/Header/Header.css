@@ -1,0 +1,74 @@
+.header {
+    width: 100%;
+    height: 50px;
+    background-color: #fff;
+}
+.header-wrapper {
+    width: 80%;
+    margin: 0 auto;
+}
+.header-title {
+    float: left;
+    margin-right: 50px;
+    color: #008bed;
+}
+.header-nav {
+    list-style: none;
+    overflow: hidden;
+    height: 100%;
+}
+.header-nav li {
+    float: left;
+    height: 100%;
+    margin-right: 20px;
+
+}
+.header-nav li:last-child {
+    float: right;
+    margin-right: 0;
+}
+.header-nav li a {
+    display: inline-block;
+    height: 100%;
+    line-height: 50px;
+    text-decoration: none;
+    color: black;
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 20px;
+    cursor: pointer;
+}
+.header-nav li a::before {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    margin-right: 5px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.header-new::before {
+    background-image: url(./新闻.png);
+}
+.header-theme::before {
+    background-image: url(./主题.png);
+}
+.header-about::before {
+    background-image: url(./关于.png);
+}
+.nav-active {
+    color: #008bed !important;
+    border-bottom: 3px solid #008bed;
+}
+.nav-active-new::before {
+    background-image: url(./新闻-蓝.png);
+}
+.nav-active-theme::before {
+    background-image: url(./主题-蓝.png);
+}
+.nav-active-about::before {
+    background-image: url(./关于-蓝.png);
+}
+

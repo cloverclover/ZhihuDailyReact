@@ -1,0 +1,28 @@
+.loading {
+    padding-top: 100px;
+    width: 100%;
+    background-color: #f6f6f6;
+}
+.loading-wrapper {
+    text-align: center;
+    overflow: hidden;
+}
+.loading-text {
+    text-align: center;
+    height: 64px;
+    line-height: 64px;
+    margin-left: 20px;
+    user-select: none;
+}
+.loading-text::before {
+    display: inline-block;
+    content: '';
+    width: 64px;
+    height: 64px;
+    margin-right: 20px;
+    vertical-align: middle;
+    background-image: url(./loading.gif);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}

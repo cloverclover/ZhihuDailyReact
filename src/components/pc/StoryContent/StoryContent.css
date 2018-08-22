@@ -1,0 +1,36 @@
+.storyContent {
+    max-width: 600px;
+    min-width: 300x;
+    margin: 10px auto;
+    background-color: #fff;
+    overflow: hidden;
+}
+.storyContent-image-wrapper {
+    width: 100%;
+    position: relative;
+}
+.storyContent-image {
+    width: 100%;
+    min-height: 500px;
+}
+.storyContent-title {
+    position: absolute;
+    width: 100%;
+    color: white;
+    bottom: 20px;
+    text-align: center;
+    margin: 20px 0;
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+
+}
+.storyContent-imageSource {
+    position: absolute;
+    color: #ccc;
+    bottom: 10px;
+    right: 40px;
+    font-size: 12px;
+
+}
+.storyContent_body {
+    padding: 10px;
+}

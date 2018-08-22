@@ -1,0 +1,30 @@
+.newsblockitem {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.newsblockitem_wrapper {
+    display: block;
+    width: 100%;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    color: black;
+    background-color: #fff;
+}
+
+.newsblockitem_img {
+    width: 100%;
+    min-height: 150px;
+}
+
+.newsblockitem_desc {
+    padding: 10px;
+    text-align: center;
+}
+
+.newsblockitem_time {
+    color: #ccc;
+    padding-left: 10px;
+    font-size: 12px;
+}

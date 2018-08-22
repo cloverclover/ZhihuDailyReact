@@ -1,0 +1,28 @@
+.themeItem {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+}
+.themeItem-wrapper {
+    display: block;
+    width: 100%;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    color: black;
+    background-color: #fff;
+}
+.themeItem-img {
+    max-width: 100%;
+    min-height: 260px;
+}
+.themeItem-name {
+    text-align: center;
+    padding: 10px;
+
+}
+.themeItem-description {
+    text-align: center;
+    font-size: 12px;
+    color: #ccc;
+    padding: 10px;
+}

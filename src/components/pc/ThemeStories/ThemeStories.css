@@ -1,0 +1,8 @@
+.themeStories-item {
+    float: left;
+    width: 33.33%;
+    overflow: hidden;
+}
+.clear {
+    clear: left;
+}
