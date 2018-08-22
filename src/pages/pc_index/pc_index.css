@@ -1,3 +1,6 @@
+* {
+    box-sizing: border-box;
+}
 .news_pc {
     width: 100%;
     margin: 0 auto;

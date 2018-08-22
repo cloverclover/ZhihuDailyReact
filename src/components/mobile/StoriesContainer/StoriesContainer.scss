@@ -1,0 +1,62 @@
+@function px2rem($px) {
+    $rem: 40.3px;
+    @return ($px / 2.675 / $rem)+rem;
+}
+
+.storiesContainer {
+    width: 100%;
+    overflow: hidden;
+    .storiesContainer-header {
+        width: 100%;
+        height: px2rem(170px);
+        background-color: #00a2ed;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .storiesContainer-more {
+            padding: px2rem(60px);
+            .storiesContainer-more-body {
+                width: px2rem(50px);
+                height: px2rem(50px);
+                background-image: url(./更多.png);
+                background-position: center;
+                background-size: contain;
+                background-repeat: no-repeat;
+
+            }
+        }
+        .storiesContainer-title {
+            padding: px2rem(60px) px2rem(30px);
+            .storiesContainer-title-body {
+                width: px2rem(120px);
+                font-size: px2rem(50px);
+                color: #fff;
+            }
+        }
+        .storiesContainer-space {
+            flex: 1;
+        }
+        .storiesContainer-remind {
+            padding: px2rem(60px) px2rem(30px);
+            .storiesContainer-remind-body {
+                width: px2rem(50px);
+                height: px2rem(50px);
+                background-image: url(./提醒.png);
+                background-position: center;
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
+        }
+        .storiesContainer-about {
+            padding: px2rem(60px) px2rem(30px);
+            .storiesContainer-about-body {
+                width: px2rem(50px);
+                height: px2rem(50px);
+                background-image: url(./关于.png);
+                background-position: center;
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
+        }
+    }
+}

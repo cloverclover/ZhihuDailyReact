@@ -8,6 +8,7 @@ import store from './redux/index';
 import './index.css';
 
 import PCIndex from './pages/pc_index/pc_index';
+import MobileIndex from './pages/mobile_index/mobile_index';
 
 store.subscribe(function(){
     console.log(store.getState());
@@ -16,7 +17,7 @@ store.subscribe(function(){
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
-            <PCIndex />
+            <MobileIndex />
         </BrowserRouter>
     </Provider>,
     document.getElementById('root')
