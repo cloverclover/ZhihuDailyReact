@@ -59,4 +59,14 @@
             }
         }
     }
+    .hotStories-wrapper {
+        width: 100%;
+        height: px2rem(674px);
+        background-color: #ccc;
+    }
+    .storiesList-wrapper {
+        width: 100%;
+        background-color: #f3f3f3;
+        padding: 0 px2rem(24px);
+    }
 }

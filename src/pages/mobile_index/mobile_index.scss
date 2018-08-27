@@ -2,3 +2,6 @@
     $rem: 40.3px;
     @return ($px / $rem) + rem;
 }
+* {
+    box-sizing: border-box;
+}

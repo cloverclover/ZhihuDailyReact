@@ -1,0 +1,52 @@
+@function px2rem($px) {
+    $rem: 40.3px;
+    @return ($px / 2.675 / $rem)+rem;
+}
+
+.hotStories {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    .hotStories-image-list {
+        position: absolute;
+        height: 100%;
+        transition: left 0.5s;
+        li {
+            float: left;
+            position: relative;
+            list-style: none;
+            height: 100%;
+            .hotStories-image {
+                width: 100%;
+                height: 100%;
+            }
+            .hotStories-title {
+                position: absolute;
+                bottom: px2rem(88px);
+                font-size: px2rem(56px);
+                padding: 0 px2rem(58px);
+                color: #fff;
+            }
+        }
+    }
+    .hotStories-image-btn {
+        position: absolute;
+        bottom: px2rem(30px);
+        left: 50%;
+        transform: translateX(-50%);
+        overflow: hidden;
+        li {
+            float: left;
+            list-style: none;
+            width: px2rem(20px);
+            height: px2rem(20px);
+            border-radius: 50%;
+            background-color: #ccc;
+            margin: 0 px2rem(6px);
+        }
+        .active {
+            background-color: #fff;
+        }
+    }
+}

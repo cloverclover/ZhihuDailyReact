@@ -13,6 +13,13 @@ module.exports = merge(common, {
                     fallback: 'style-loader',
                     use: ['css-loader']
                 })
+            },
+            {
+                test: /\.scss$/,
+                use: extractTextWebpackPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader', 'sass-loader']
+                })
             }
         ]
     },
