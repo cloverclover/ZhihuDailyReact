@@ -1,0 +1,49 @@
+@function px2rem($px) {
+    $rem: 40.3px;
+    @return ($px / 2.675 / $rem)+rem;
+}
+
+.commentsContainer {
+    width: 100%;
+    overflow: hidden;
+    .commentsContainer-header {
+        width: 100%;
+        height: px2rem(170px);
+        background-color: #00a2ed;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .commentsContainer-back {
+            padding: px2rem(60px);
+            .commentsContainer-back-body {
+                width: px2rem(50px);
+                height: px2rem(50px);
+                background-image: url(./返回.png);
+                background-position: center;
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
+        }
+        .commentsContainer-num {
+            overflow: hidden;
+            padding: px2rem(10px);
+            font-size: px2rem(48px);
+            color: #fff;
+        }
+        .commentsContainer-space {
+            flex: 1;
+        }
+        .commentsContainer-write {
+            padding: px2rem(60px) px2rem(30px);
+            .commentsContainer-write-body {
+                width: px2rem(50px);
+                height: px2rem(50px);
+                background-image: url(./写评论.png);
+                background-position: center;
+                background-size: contain;
+                background-repeat: no-repeat;
+
+            }
+        }
+    }
+}

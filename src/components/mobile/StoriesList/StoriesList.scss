@@ -1,0 +1,16 @@
+@function px2rem($px) {
+    $rem: 40.3px;
+    @return ($px / 2.675 / $rem)+rem;
+}
+
+.storiesList {
+    width: 100%;
+    overflow: hidden;
+    .storiesList-date {
+        height: px2rem(156px);
+        line-height: px2rem(156px);
+        font-size: px2rem(36px);
+        color: #6f6f6f;
+        padding-left: px2rem(32px);
+    }
+}

@@ -10,7 +10,8 @@ export default class NewsMain extends React.Component {
     render() {
         
 
-        let date = this.props.date;
+        console.log(this.props);
+        let date = this.props.currentStories.date;
         let dateObject = new Date(date.substring(0,4) + '-' + date.substring(4, 6) + '-' + date.substring(6, 8));
         const week = ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
         let dateString = (dateObject.getMonth() + 1) + '月' + dateObject.getDate() + '日  ' + week[dateObject.getDay()];
@@ -42,7 +43,7 @@ export default class NewsMain extends React.Component {
                     <div className="main-news">
                     <Switch>
                         <Route path="/news" exact render={
-                            () => <NewsBlock stories={this.props.stories} dateString={dateString} />
+                            () => <NewsBlock stories={this.props.currentStories.stories} dateString={dateString} />
                         } />
                         <Route path="/news/hotnews" render={
                             () => <HotNewsBlock hotStories={this.props.hotStories} getHotStory={this.props.getHotStory} />

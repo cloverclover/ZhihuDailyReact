@@ -1,0 +1,32 @@
+@function px2rem($px) {
+    $rem: 40.3px;
+    @return ($px / 2.675 / $rem)+rem;
+}
+
+.storiesItem {
+    overflow: hidden;
+    background-color: #fff;
+    padding: px2rem(36px) px2rem(46px);
+    border-radius: px2rem(14px);
+    margin: px2rem(10px) 0;
+    .storiesItem-link {
+        overflow: hidden;
+        display: block;
+        color: black;
+        text-decoration: none;
+        .storiesItem-image-wrapper {
+            float: right;
+            width: px2rem(246px);
+            .storiesItem-image {
+                width: 100%;
+            }
+        }
+        .storiesItem-title {
+            overflow: hidden;
+            padding: px2rem(10px);
+            font-size: px2rem(48px);
+        }
+    }
+    
+    
+}

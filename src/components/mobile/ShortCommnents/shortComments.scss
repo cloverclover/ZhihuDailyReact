@@ -1,0 +1,17 @@
+@function px2rem($px) {
+    $rem: 40.3px;
+    @return ($px / 2.675 / $rem)+rem;
+}
+
+.shortComments {
+    overflow: hidden;
+    .comments-num {
+        width: 100%;
+        height: px2rem(146px);
+        line-height: px2rem(146px);
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        padding-left: px2rem(50px);
+        font-size: px2rem(36px);
+    }
+}

@@ -1,4 +1,6 @@
 import {filterImage} from '../common/filter';
+import {convertToLocalString} from '../common/time';
+import { baseUrl } from './common';
 
 const GET_STORY_REQUEST = 'GET_STORY_REQUEST';
 const GET_STORY_SUCCESS = 'GET_STORY_SUCCESS';
@@ -14,8 +16,7 @@ function getStoryRequest() {
 function getStorySuccess(data) {
     return {
         type: GET_STORY_SUCCESS,
-        date: data.date,
-        stories: data.stories
+        data: data
     }
 }
 function getStoryFail(error) {
@@ -24,6 +25,7 @@ function getStoryFail(error) {
         error: error
     }
 }
+/*
 export function getStory() {
     const baseUrl = 'http://localhost:8086';
     return function (dispatch, getState) {
@@ -43,16 +45,40 @@ export function getStory() {
         )
     }
 }
+*/
+export function getStory() {
+    console.log('执行getStory');
+    return function (dispatch, getState) {
+        console.log('执行getStory内部');
+        //获取date属性
+        let date = getState().dataConfig.date;
+        //dispatch(getStoryRequest());
+        fetch(baseUrl + '/api/4/news/before/' + date)
+        .then(response => response.json())
+        .then(res => JSON.parse(filterImage(JSON.stringify(res))))
+        .then(
+            json => {
+                dispatch(getStorySuccess(json));
+            }
+        ).catch(
+            () => {
+                dispatch(getStoryFail())
+            }
+        )
+    }
+}
+
 function getHotStorySuccess(data) {
     return {
         type: GET_HOT_STORY_SUCCESS,
-        hotStories: data.recent
+        date: data.date,
+        hotStories: data.top_stories
     }
 }
 export function getHotStory() {
 
     return function(dispatch, getState) {
-        fetch('http://localhost:8086' + '/api/3/news/hot')
+        fetch(baseUrl + '/api/4/news/latest')
         .then(response => response.json())
         .then(res => JSON.parse(filterImage(JSON.stringify(res))))
         .then(
@@ -65,7 +91,7 @@ export function getHotStory() {
 }
 
 
-
+/*
 let initialState = {
     date: '',
     stories: [
@@ -75,7 +101,7 @@ let initialState = {
                 'http://p4.zhimg.com/7b/c8/7bc8ef5947b069513c51e4b9521b5c82.jpg'
             ],
             id: 1747159
-        }*/
+        }*//*
     ],
     hotStories: [
         /*
@@ -85,10 +111,61 @@ let initialState = {
             url: '',
             news_id: 0
         }
-        */
+        *//*
     ]
 }
+*/
+
+let initialState = {
+    currentStories: {
+        date: '',
+        stories: []
+    },
+    storiesList: [
+        /*{
+            date: '',
+            stories: []
+        }*/
+    ],
+    hotStories: [
+        /*{
+            date: '',
+            stories: []
+        }*/
+    ]
+}
+
 //reducer
+
+export function reducer(state = initialState, action) {
+    switch (action.type) {
+        case GET_STORY_REQUEST:
+            return state;
+        case GET_STORY_SUCCESS:
+            console.log('action', action);
+            console.log('state', state);
+            return {
+                currentStories: action.data,
+                storiesList: [
+                    ...state.storiesList,
+                    action.data
+                ],
+                hotStories: state.hotStories
+            };
+        case GET_STORY_FAIL:
+            return state;
+        case GET_HOT_STORY_SUCCESS:
+            return {
+                currentStories: state.currentStories,
+                storiesList: state.storiesList,
+                hotStories: action.hotStories
+            }
+        default:
+            return state;
+    }
+}
+
+/*
 export function reducer(state = initialState, action) {
     switch (action.type) {
         case GET_STORY_REQUEST:
@@ -111,3 +188,4 @@ export function reducer(state = initialState, action) {
             return state;
     }
 }
+*/

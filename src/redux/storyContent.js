@@ -1,5 +1,8 @@
 import {filterImage} from '../common/filter';
 
+import {getStoryExtra} from './comment';
+import { baseUrl } from './common';
+
 const GET_STORY_CONTENT_REQUEST = 'GET_STORY_CONTENT_REQUEST';
 const GET_STORY_CONTENT_SUCCESS = 'GET_STORY_CONTENT_SUCCESS';
 
@@ -19,12 +22,13 @@ function getStoryContentSuccess(data) {
 export function getStoryContent(id) {
     return function(dispatch, getState) {
         dispatch(getStoryContentRequest());
-        fetch('http://localhost:8086' + '/api/4/news/' + id)
+        fetch(baseUrl + '/api/4/news/' + id)
         .then(response => response.json())
         .then(res => JSON.parse(filterImage(JSON.stringify(res))))
         .then(
             json => {
                 dispatch(getStoryContentSuccess(json));
+                dispatch(getStoryExtra(id));
             }
         )
         .catch();
