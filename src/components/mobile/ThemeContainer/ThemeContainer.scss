@@ -1,0 +1,86 @@
+@function px2rem($px) {
+    $rem: 40.3px;
+    @return ($px / 2.675 / $rem)+rem;
+}
+
+
+.themeContainer {
+    width: 100%;
+    overflow: hidden;
+    .themeContainer-header {
+        width: 100%;
+        height: px2rem(170px);
+        background-color: #00a2ed;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .themeContainer-more {
+            padding: px2rem(60px);
+            .themeContainer-more-body {
+                width: px2rem(50px);
+                height: px2rem(50px);
+                background-image: url(./更多.png);
+                background-position: center;
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
+        }
+        .themeContainer-title {
+            padding: px2rem(60px) px2rem(30px);
+            .themeContainer-title-body {
+                font-size: px2rem(50px);
+                color: #fff;
+                font-size: px2rem(50px);
+            }
+
+        }
+        .themeContainer-space {
+            flex: 1;
+        }
+    }
+    .themeContainer-image-wrapper {
+        width: 100%;
+        height: px2rem(674px);
+        overflow: hidden;
+        position: relative;
+        .themeContainer-image {
+            width: 100%;
+            height: 100%;
+            .themeContainer-description {
+                position: absolute;
+                bottom: px2rem(84px);
+                padding: px2rem(48px);
+                color: #fff;
+                font-size: px2rem(50px);
+            }
+        }
+    }
+    .themeContainer-list-wrapper {
+        width: 100%;
+        background-color: #f3f3f3;
+        padding: 0 px2rem(24px);
+        .themeContainer-editors {
+            overflow: hidden;
+            padding: px2rem(30px);
+            display: flex;
+            align-items: center;
+            .themeContainer-editors-title {
+                font-size: px2rem(40px);
+                color: #6f6f6f;
+
+            }
+            .themeContainer-editors-wrapper {
+                overflow: hidden;
+                .themeContainer-editors-item {
+                    float: left;
+                    width: px2rem(96px);
+                    height: px2rem(96px);
+                    border-radius: 50%;
+                    margin: 0 px2rem(50px);
+                    vertical-align: middle;
+                }
+            }
+            
+        }
+    }
+}

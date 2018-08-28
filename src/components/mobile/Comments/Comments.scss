@@ -1,0 +1,63 @@
+@function px2rem($px) {
+    $rem: 40.3px;
+    @return ($px / 2.675 / $rem)+rem;
+}
+
+
+.comments {
+    width: 100%;
+    overflow: hidden;
+    .comments-item {
+        padding: px2rem(50px);
+        overflow: hidden;
+        .comments-icon {
+            float: left;
+            width: px2rem(160px);
+            .comments-icon-image {
+                border-radius: 50%;
+                width: px2rem(106px);
+                height: px2rem(106px);
+
+            }
+        }
+        .comments-body {
+            overflow: hidden;
+            margin-left: px2rem(18px);
+            .comments-body-header {
+                overflow: hidden;
+                .comments-body-name {
+                    float: left;
+                    padding: px2rem(15px) 0;
+                    font-size: px2rem(48px);
+                }
+                .comments-body-like {
+                    float: right;
+                    font-size: px2rem(30px);
+                    color: #b8b8b8;
+                    &::before {
+                        display: inline-block;
+                        content: '';
+                        vertical-align: middle;
+                        width: px2rem(30px);
+                        height: px2rem(30px);
+                        margin-right: px2rem(10px);
+                        background-image: url(./点赞.png);
+                        background-position: center;
+                        background-size: contain;
+                        background-repeat: no-repeat;
+
+                    }
+                }
+            }
+            .comments-body-content {
+                padding: px2rem(44px) 0;
+                font-size: px2rem(44px);
+                color: #333;
+            }
+            .comments-body-time {
+                font-size: px2rem(30px);
+                color: #b6b6b6;
+            }
+        }
+    }
+}

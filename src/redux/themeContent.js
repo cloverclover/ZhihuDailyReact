@@ -1,4 +1,5 @@
 import {filterImage} from '../common/filter';
+import { baseUrl } from './common';
 
 const GET_THEME_CONTENT_SUCCESS = 'GET_THEME_CONTENT_SUCCESS';
 const GET_THEME_CONTENT_REQUEST = 'GET_THEME_CONTENT_REQUEST';
@@ -18,7 +19,7 @@ function getThemeContentSuccess(data) {
 export function getThemeContent(id) {
     return function(dispatch, getState) {
         dispatch(getThemeContentRequest());
-        fetch('http://localhost:8086' + '/api/4/theme/' + id)
+        fetch(baseUrl + '/api/4/theme/' + id)
         .then(response => response.json())
         .then(res => JSON.parse(filterImage(JSON.stringify(res))))
         .then(
@@ -36,7 +37,8 @@ let initialState = {
     description: '',
     background: '',
     image_source: '',
-    stories: []
+    stories: [],
+    editors: []
 }
 
 export function reducer(state = initialState, action) {
@@ -48,7 +50,8 @@ export function reducer(state = initialState, action) {
                 description: state.description,
                 background: state.background,
                 image_source: state.image_source,
-                stories: state.stories
+                stories: state.stories,
+                editors: state.editors
             }
         case GET_THEME_CONTENT_SUCCESS:
             return {
@@ -57,7 +60,8 @@ export function reducer(state = initialState, action) {
                 description: action.themeContent.description,
                 background: action.themeContent.background,
                 image_source: action.themeContent.image_source,
-                stories: action.themeContent.stories
+                stories: action.themeContent.stories,
+                editors: action.themeContent.editors
             };
         default:
             return state;

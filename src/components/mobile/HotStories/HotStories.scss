@@ -17,17 +17,26 @@
             position: relative;
             list-style: none;
             height: 100%;
-            .hotStories-image {
+            .hotStories-link {
                 width: 100%;
                 height: 100%;
-            }
-            .hotStories-title {
-                position: absolute;
-                bottom: px2rem(88px);
-                font-size: px2rem(56px);
-                padding: 0 px2rem(58px);
+                display: block;
+                text-decoration: none;
                 color: #fff;
+                .hotStories-image {
+                    width: 100%;
+                    height: 100%;
+                }
+
+                .hotStories-title {
+                    position: absolute;
+                    bottom: px2rem(88px);
+                    font-size: px2rem(56px);
+                    padding: 0 px2rem(58px);
+                    color: #fff;
+                }
             }
+            
         }
     }
     .hotStories-image-btn {

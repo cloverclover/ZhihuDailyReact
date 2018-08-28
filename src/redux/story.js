@@ -1,5 +1,6 @@
 import {filterImage} from '../common/filter';
 import {convertToLocalString} from '../common/time';
+import { baseUrl } from './common';
 
 const GET_STORY_REQUEST = 'GET_STORY_REQUEST';
 const GET_STORY_SUCCESS = 'GET_STORY_SUCCESS';
@@ -47,7 +48,6 @@ export function getStory() {
 */
 export function getStory() {
     console.log('执行getStory');
-    const baseUrl = 'http://localhost:8086';
     return function (dispatch, getState) {
         console.log('执行getStory内部');
         //获取date属性
@@ -78,7 +78,7 @@ function getHotStorySuccess(data) {
 export function getHotStory() {
 
     return function(dispatch, getState) {
-        fetch('http://localhost:8086' + '/api/4/news/latest')
+        fetch(baseUrl + '/api/4/news/latest')
         .then(response => response.json())
         .then(res => JSON.parse(filterImage(JSON.stringify(res))))
         .then(
@@ -117,7 +117,7 @@ let initialState = {
 */
 
 let initialState = {
-    currentStory: {
+    currentStories: {
         date: '',
         stories: []
     },
@@ -145,7 +145,7 @@ export function reducer(state = initialState, action) {
             console.log('action', action);
             console.log('state', state);
             return {
-                currentStory: action.data,
+                currentStories: action.data,
                 storiesList: [
                     ...state.storiesList,
                     action.data
@@ -156,7 +156,7 @@ export function reducer(state = initialState, action) {
             return state;
         case GET_HOT_STORY_SUCCESS:
             return {
-                currentStory: state.currentStory,
+                currentStories: state.currentStories,
                 storiesList: state.storiesList,
                 hotStories: action.hotStories
             }

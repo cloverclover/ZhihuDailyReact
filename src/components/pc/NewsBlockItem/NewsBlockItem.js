@@ -5,10 +5,10 @@ import './NewsBlockItem.css';
 
 export default class NewsBlockItem extends React.Component {
     render() {
-        let image = (this.props.story && this.props.story.images && this.props.story.images[0]) || (this.props.hotStory && this.props.hotStory.thumbnail);
+        let image = (this.props.story && this.props.story.images && this.props.story.images[0]) || (this.props.hotStory && this.props.hotStory.image);
         let title = (this.props.story && this.props.story.title) || this.props.hotStory.title;
         let date = this.props.dateString || '';
-        let id = (this.props.story && this.props.story.id) || this.props.hotStory.news_id;
+        let id = (this.props.story && this.props.story.id) || this.props.hotStory.id;
         let url = '/news/story/' + id;
 
         let imageEl = image? <img src={image} alt={title} className="newsblockitem_img" /> : <div className="newsblockitem_img"></div>;

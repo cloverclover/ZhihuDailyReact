@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import {BrowserRouter} from 'react-router-dom';
+import MediaQuery from 'react-responsive';
 
 import store from './redux/index';
 
@@ -18,7 +19,14 @@ store.subscribe(function(){
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
-            <MobileIndex />
+            <React.Fragment>
+                <MediaQuery query="(min-device-width: 1224px)">
+                    <PCIndex />
+                </MediaQuery>
+                <MediaQuery query="(max-device-width: 1224px)">
+                    <MobileIndex />
+                </MediaQuery>
+            </React.Fragment>
         </BrowserRouter>
     </Provider>,
     document.getElementById('root')

@@ -23,6 +23,7 @@ class PCIndex extends React.Component {
     */
     componentDidMount() {
         this.props.loadStory();
+        this.props.history.push('/news');
     }
 
     render() {
@@ -51,8 +52,7 @@ class PCIndex extends React.Component {
 
                     <Route path="/news" render={() => 
                     <NewsMain 
-                    date={this.props.date} 
-                    stories={this.props.stories} 
+                    currentStories={this.props.currentStories} 
                     isToday={this.props.isToday} 
                     hotStories={this.props.hotStories} 
                     setNextDate={this.props.setNextDate}
@@ -67,8 +67,7 @@ class PCIndex extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        date: state.story.date,
-        stories: state.story.stories,
+        currentStories: state.story.currentStories,
         isToday: state.dataConfig.isToday,
         hotStories: state.story.hotStories,
         storyContent: state.storyContent,

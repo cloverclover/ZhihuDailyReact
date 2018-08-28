@@ -1,16 +1,20 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 import './StoriesItem.scss';
 
 export default class StoriesItem extends React.Component {
     render() {
-        let {title, images} = this.props.story;
+        let {title, images, id} = this.props.story;
+        let url = '/story/' + id;
         return (
             <div className="storiesItem">
-                <div className="storiesItem-image-wrapper">
-                    <img src={images[0]} className="storiesItem-image" />
-                </div>
-                <div className="storiesItem-title">{title}</div>
+                <Link to={url} className="storiesItem-link">
+                    <div className="storiesItem-image-wrapper">
+                        <img src={images && images[0]} className="storiesItem-image" />
+                    </div>
+                    <div className="storiesItem-title">{title}</div>
+                </Link>
             </div>
         );
     }

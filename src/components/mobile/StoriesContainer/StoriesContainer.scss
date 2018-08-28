@@ -4,6 +4,7 @@
 }
 
 .storiesContainer {
+    position: absolute;//两个定位块之间不会传递滑动事件
     width: 100%;
     overflow: hidden;
     .storiesContainer-header {
@@ -62,7 +63,6 @@
     .hotStories-wrapper {
         width: 100%;
         height: px2rem(674px);
-        background-color: #ccc;
     }
     .storiesList-wrapper {
         width: 100%;

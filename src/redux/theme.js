@@ -1,4 +1,5 @@
 import {filterImage} from '../common/filter';
+import { baseUrl } from './common';
 
 const GET_THEME_SUCCESS = 'GET_THEME_SUCCESS';
 //action creator
@@ -11,7 +12,7 @@ function getThemeSuccess(data) {
 
 export function getTheme() {
     return function(dispatch, getState) {
-        fetch('http://localhost:8086' + '/api/4/themes')
+        fetch(baseUrl + '/api/4/themes')
         .then(response => response.json())
         .then(res => JSON.parse(filterImage(JSON.stringify(res))))
         .then(

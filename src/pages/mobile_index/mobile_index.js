@@ -6,16 +6,23 @@ import './mobile_index.scss';
 
 import {getStory, getHotStory} from '../../redux/story';
 import {setPreviousDate} from '../../redux/dataconfig';
+import {getStoryContent} from '../../redux/storyContent';
+import {getLongComments} from '../../redux/comment';
+import {getTheme} from '../../redux/theme';
+import {getThemeContent} from '../../redux/themeContent';
 
 import StoriesContainer from '../../components/mobile/StoriesContainer/StoriesContainer';
+import StoryContainer from '../../components/mobile/StoryContainer/StoryContainer';
+import AsideContainer from '../../components/mobile/AsideContainer/AsideContainer';
+import ThemeContainer from '../../components/mobile/ThemeContainer/ThemeContainer';
 
 class MobileIndex extends React.Component {
     constructor() {
         super();
         this.state = {
-            isBottom: false
+            isAsideShow: false,
         }
-        this.loadMore = this.loadMore.bind(this);
+        this.handleShowMore = this.handleShowMore.bind(this);
     }
 
     componentWillMount() {
@@ -35,45 +42,52 @@ class MobileIndex extends React.Component {
     componentDidMount() {
         this.props.getStory();
         this.props.getHotStory();
-        window.addEventListener('scroll', this.loadMore);
     }
-    
-    loadMore() {
-        //获取滚动条的位置
-        let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-        //获取可视范围的高度
-        let clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
-        //获取文档完整高度
-        let scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
-        /*
-        console.log('scrollTop', scrollTop);
-        console.log('clientHeight', clientHeight);
-        console.log('scrollHeight', scrollHeight);
-        console.log(scrollTop + clientHeight);
-        */
-        //判断是否到了底部,减1为消除误差
-        if(scrollTop + clientHeight >= scrollHeight - 1) {
-            if(!this.state.isBottom) {
-                this.setState({
-                    isBottom: true
-                });
-                this.props.setPreviousDate();
-            }
-        } else {
-            this.setState({
-                isBottom: false
-            });
-        }
+
+    handleShowMore(isShow) {
+        this.setState({
+            isAsideShow: isShow
+        })
     }
 
     render() {
         return (
             <div className="mobileIndex">
+                <Route path="/theme/:id" render={
+                    ({match}) => <ThemeContainer 
+                    getThemeContent={this.props.getThemeContent} 
+                    themeContent={this.props.themeContent}
+                    id={match.params.id}
+                    handleShowMore={this.handleShowMore}
+                    />
+                } />
+                <AsideContainer 
+                    themeList={this.props.themeList}
+                    getTheme={this.props.getTheme}
+                    isAsideShow={this.state.isAsideShow}
+                    handleShowMore={this.handleShowMore}
+                    />
+                <Route path="/story/:id" render={
+                    ({match, history}) => <StoryContainer 
+                    getStoryContent={this.props.getStoryContent} 
+                    getLongComments={this.props.getLongComments} 
+                    storyContent={this.props.storyContent} 
+                    storyExtra={this.props.storyExtra} 
+                    longComments={this.props.longComments}
+                    shortComments={this.props.shortComments}
+                    id={match.params.id} 
+                    history={history} 
+                    />
+                } />
                 <Route path="/" exact render={
-                    () => <StoriesContainer 
+                    ({history}) => <StoriesContainer 
                     getStory={this.props.getStory} 
                     storiesList={this.props.storiesList} 
                     hotStories={this.props.hotStories}
+                    history={history}
+                    storiesContainerRef={el => this.storiesContainerElement = el}
+                    handleShowMore={this.handleShowMore}
+                    setPreviousDate={this.props.setPreviousDate}
                     />
                 } />
             </div>
@@ -85,7 +99,13 @@ const mapStateToProps = state => {
     console.log('redux state', state);
     return {
         storiesList: state.story.storiesList,
-        hotStories: state.story.hotStories
+        hotStories: state.story.hotStories,
+        storyContent: state.storyContent,
+        storyExtra: state.comment.storyExtra,
+        longComments: state.comment.longComments,
+        shortComments: state.comment.shortComments,
+        themeList: state.theme.theme,
+        themeContent: state.themeContent
     }
 }
 
@@ -93,7 +113,11 @@ const mapDispatchToProps = dispatch => {
     return {
         getStory: () => { dispatch(getStory()) },
         setPreviousDate: () => { dispatch(setPreviousDate()) },
-        getHotStory: () => { dispatch(getHotStory()) }
+        getHotStory: () => { dispatch(getHotStory()) },
+        getStoryContent: (id) => { dispatch(getStoryContent(id)) },
+        getLongComments: (id) => { dispatch(getLongComments(id)) },
+        getTheme: () => { dispatch(getTheme()) },
+        getThemeContent: (id) => { dispatch(getThemeContent(id)) }
     }
 }
 

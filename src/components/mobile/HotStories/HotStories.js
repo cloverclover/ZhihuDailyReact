@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 import './HotStories.scss';
 
@@ -84,6 +85,9 @@ export default class HotStories extends React.Component {
         })
         this.thouch();
     }
+    componentWillUnmount() {
+        clearInterval(this.state.timer);
+    }
 
     render() {
 
@@ -94,10 +98,13 @@ export default class HotStories extends React.Component {
         //图片外框的长度
         let ulWidth = imageNum * deviceWidth;
         let hotStories = this.props.hotStories.map(function(item) {
+            let url = '/story/' + item.id;
             return (
                 <li key={item.id} style={{width: deviceWidth}}>
-                    <img src={item.image} className="hotStories-image" />
-                    <p className="hotStories-title">{item.title}</p>
+                    <Link to={url} className="hotStories-link">
+                        <img src={item.image} className="hotStories-image" />
+                        <p className="hotStories-title">{item.title}</p>
+                    </Link>
                 </li>
             );
         });

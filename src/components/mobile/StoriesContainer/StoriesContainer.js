@@ -6,6 +6,52 @@ import HotStories from '../HotStories/HotStories';
 import StoriesList from '../StoriesList/StoriesList';
 
 export default class StoriesContainer extends React.Component {
+    constructor() {
+        super();
+        this.state={
+            isBottom: false
+        }
+        this.loadMore = this.loadMore.bind(this);
+        this.handleMore = this.handleMore.bind(this);
+
+    }
+    handleMore() {
+        this.props.handleShowMore(true);
+    }
+    loadMore() {
+        //获取滚动条的位置
+        let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        //获取可视范围的高度
+        let clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+        //获取文档完整高度
+        let scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+        /*
+        console.log('scrollTop', scrollTop);
+        console.log('clientHeight', clientHeight);
+        console.log('scrollHeight', scrollHeight);
+        console.log(scrollTop + clientHeight);
+        */
+        //判断是否到了底部,减1为消除误差
+        if (scrollTop + clientHeight >= scrollHeight - 1) {
+            if (!this.state.isBottom) {
+                this.setState({
+                    isBottom: true
+                });
+                this.props.setPreviousDate();
+            }
+        } else {
+            this.setState({
+                isBottom: false
+            });
+        }
+    }
+    componentDidMount() {
+        window.addEventListener('scroll', this.loadMore);
+    }
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.loadMore);
+    }
+
     render() {
 
 
@@ -15,9 +61,9 @@ export default class StoriesContainer extends React.Component {
         });
 
         return (
-            <div className="storiesContainer">
+            <div className="storiesContainer" ref={this.props.storiesContainerRef}>
                 <div className="storiesContainer-header">
-                    <div className="storiesContainer-more">
+                    <div className="storiesContainer-more" onClick={this.handleMore}>
                         <div className="storiesContainer-more-body"></div>
                     </div>
                     <div className="storiesContainer-title">
