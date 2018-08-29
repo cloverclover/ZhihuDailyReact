@@ -3,6 +3,8 @@ import React from 'react';
 import './ThemeContainer.scss';
 
 import StoriesItem from '../StoriesItem/StoriesItem';
+import Loading from '../Loading/Loading';
+
 export default class ThemeContainer extends React.Component {
 
     componentDidMount() {
@@ -15,16 +17,16 @@ export default class ThemeContainer extends React.Component {
     }
     render() {
 
+        let id = this.props.id;
         let {name, description, background, editors, stories} = this.props.themeContent;
         let storiesList = stories && stories.map(function(item) {
-            return <StoriesItem story={item} key={item.id}  />
+            return <StoriesItem story={item} key={item.id} themeId={id}  />
         });
         let editorsList = editors && editors.map(function(item) {
             return <img src={item.avatar} key={item.id} className="themeContainer-editors-item" />
         });
 
-        return (
-            <div className="themeContainer">
+        let themeHeader = (
                 <div className="themeContainer-header">
                     <div className="themeContainer-more" onClick={this.props.handleShowMore}>
                         <div className="themeContainer-more-body"></div>
@@ -34,6 +36,10 @@ export default class ThemeContainer extends React.Component {
                     </div>
                     <div className="themeContainer-space"></div>
                 </div>
+        );
+
+        let themeBody = (
+            <React.Fragment>
                 <div className="themeContainer-image-wrapper">
                     <img src={background} className="themeContainer-image" />
                     <p className="themeContainer-description">{description}</p>
@@ -47,6 +53,13 @@ export default class ThemeContainer extends React.Component {
                     </div>
                     {storiesList}
                 </div>
+            </React.Fragment>
+        );
+
+        return (
+            <div className="themeContainer">
+                {themeHeader}
+                {this.props.themeContent.isLoading? <Loading /> : themeBody}
             </div>
         );
     }

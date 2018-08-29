@@ -10,7 +10,7 @@ export default class LongComments extends React.Component {
 
 
         let longComments = this.props.longComments.map(function(item) {
-            return <Comments comments={item} />
+            return <Comments comments={item} key={item.id} />
         });
 
         return (
