@@ -53,6 +53,12 @@ class MobileIndex extends React.Component {
     render() {
         return (
             <div className="mobileIndex">
+                <AsideContainer 
+                    themeList={this.props.themeList}
+                    getTheme={this.props.getTheme}
+                    isAsideShow={this.state.isAsideShow}
+                    handleShowMore={this.handleShowMore}
+                    />
                 <Route path="/theme/:id" render={
                     ({match}) => <ThemeContainer 
                     getThemeContent={this.props.getThemeContent} 
@@ -61,12 +67,6 @@ class MobileIndex extends React.Component {
                     handleShowMore={this.handleShowMore}
                     />
                 } />
-                <AsideContainer 
-                    themeList={this.props.themeList}
-                    getTheme={this.props.getTheme}
-                    isAsideShow={this.state.isAsideShow}
-                    handleShowMore={this.handleShowMore}
-                    />
                 <Route path="/story/:id" render={
                     ({match, history, location}) => <StoryContainer 
                     getStoryContent={this.props.getStoryContent} 

@@ -5,15 +5,16 @@ import './StoriesItem.scss';
 
 export default class StoriesItem extends React.Component {
     render() {
-        console.log('StoriesItem', this.props);
         let {title, images, id} = this.props.story;
         let url = '/story/' + id + (this.props.themeId? '?themeId=' + this.props.themeId : '');
+        let storyImage = images? <div className="storiesItem-image-wrapper">
+                                <img src={images[0]} className="storiesItem-image" />
+                                </div>
+                                : null;
         return (
             <div className="storiesItem">
                 <Link to={url} className="storiesItem-link">
-                    <div className="storiesItem-image-wrapper">
-                        <img src={images && images[0]} className="storiesItem-image" />
-                    </div>
+                    {storyImage}
                     <div className="storiesItem-title">{title}</div>
                 </Link>
             </div>

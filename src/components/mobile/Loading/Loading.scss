@@ -1,0 +1,17 @@
+@function px2rem($px) {
+    $rem: 40.3px;
+    @return ($px / 2.675 / $rem)+rem;
+}
+
+.loading-mobile {
+    width: 100%;
+    .loadig-body-mobile {
+        margin: px2rem(600px) auto;
+        width: px2rem(100px);
+        height: px2rem(100px);
+        background-image: url(./loading.gif);
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+}

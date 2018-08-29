@@ -4,6 +4,7 @@ import {Route, Link} from 'react-router-dom';
 import './StoryContainer.scss';
 
 import CommentsContainer from '../CommentsContainer/CommentsContainer';
+import Loading from '../Loading/Loading';
 
 export default class StoryContainer extends React.Component {
     constructor() {
@@ -32,9 +33,8 @@ export default class StoryContainer extends React.Component {
         let {title, image, body, image_source, css, id} = this.props.storyContent.story;
         let {longComments, shortComments, popularity, comments} = this.props.storyExtra;
 
-        let storyContent = (
-            <React.Fragment>
-                <div className="storyContainer-header">
+        let storyHeader = (
+            <div className="storyContainer-header">
                     <div className="storyContainer-back" onClick={this.handleBack}>
                         <div className="storyContainer-back-body"></div>
                     </div>
@@ -52,13 +52,25 @@ export default class StoryContainer extends React.Component {
                         <div className="storyContainer-like-body">{popularity}</div>
                     </div>
                 </div>
+        );
+        let storyContentBody = (
+            <React.Fragment>
                 <div className="storyContainer-image-wrapper">
                     <img src={image} className="storyContainer-image" />
-                    <p className="storyContainer-title">{title}</p>
-                    <p className="storyContainer-image-source">{image_source}</p>
+                    <div className="storyContainer-image-mask">
+                        <p className="storyContainer-title">{title}</p>
+                        <p className="storyContainer-image-source">{image_source}</p>
+                    </div>
                 </div>
                 <div className="storyContainer-body" dangerouslySetInnerHTML={{__html: body}}></div>
                 <link rel="stylesheet" href={css} />
+            </React.Fragment>
+        );
+        console.log('StoryContainer', this.props.storyContent.isLoading);
+        let storyContent = (
+            <React.Fragment>
+                {storyHeader}
+                {this.props.storyContent.isLoading? <Loading /> : storyContentBody}
             </React.Fragment>
         );
 

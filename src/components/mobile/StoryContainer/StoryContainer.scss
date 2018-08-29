@@ -101,23 +101,30 @@
         overflow: hidden;
         .storyContainer-image {
             width: 100%;
+            transform: translateY(px2rem(-220px));
+
+        }
+        .storyContainer-image-mask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 100%;
-
-        }
-        .storyContainer-title {
-            position: absolute;
-            bottom: px2rem(86px);
-            padding: 0 px2rem(48px);
-            color: #fff;
-            font-size: px2rem(56px);
-
-        }
-        .storyContainer-image-source {
-            position: absolute;
-            bottom: px2rem(38px);
-            right: px2rem(48px);
-            color: #b4b4b4;
-            font-size: px2rem(30px);
+            background-color: rgba(0, 0, 0, 0.3);
+            .storyContainer-title {
+                position: absolute;
+                bottom: px2rem(86px);
+                padding: 0 px2rem(48px);
+                color: #fff;
+                font-size: px2rem(56px);
+            }
+            .storyContainer-image-source {
+                position: absolute;
+                bottom: px2rem(30px);
+                right: px2rem(48px);
+                color: #b4b4b4;
+                font-size: px2rem(30px);
+            }
         }
     }
     .storyContainer-body {
