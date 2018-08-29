@@ -7,7 +7,7 @@ import Comments from '../Comments/Comments';
 export default class ShortComments extends React.Component {
     render() {
         let shortComments = this.props.shortComments.map(function(item) {
-            return <Comments comments={item} />
+            return <Comments comments={item} key={item.id} />
         });
         return (
             <div className="shortComments">

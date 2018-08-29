@@ -68,7 +68,7 @@ class MobileIndex extends React.Component {
                     handleShowMore={this.handleShowMore}
                     />
                 <Route path="/story/:id" render={
-                    ({match, history}) => <StoryContainer 
+                    ({match, history, location}) => <StoryContainer 
                     getStoryContent={this.props.getStoryContent} 
                     getLongComments={this.props.getLongComments} 
                     storyContent={this.props.storyContent} 
@@ -77,6 +77,7 @@ class MobileIndex extends React.Component {
                     shortComments={this.props.shortComments}
                     id={match.params.id} 
                     history={history} 
+                    location={location}
                     />
                 } />
                 <Route path="/" exact render={

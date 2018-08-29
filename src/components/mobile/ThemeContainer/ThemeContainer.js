@@ -15,9 +15,10 @@ export default class ThemeContainer extends React.Component {
     }
     render() {
 
+        let id = this.props.id;
         let {name, description, background, editors, stories} = this.props.themeContent;
         let storiesList = stories && stories.map(function(item) {
-            return <StoriesItem story={item} key={item.id}  />
+            return <StoriesItem story={item} key={item.id} themeId={id}  />
         });
         let editorsList = editors && editors.map(function(item) {
             return <img src={item.avatar} key={item.id} className="themeContainer-editors-item" />

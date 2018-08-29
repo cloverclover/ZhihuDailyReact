@@ -13,7 +13,13 @@ export default class StoryContainer extends React.Component {
     }
 
     handleBack() {
-        this.props.history.goBack();
+        let search = this.props.location.search;
+        if(search) {
+            let themeId = search.replace('?', '').split('=')[1];
+            this.props.history.push('/theme/' +themeId);
+        } else {
+            this.props.history.push('/');
+        }
     }
 
     componentDidMount() {

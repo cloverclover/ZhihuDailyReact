@@ -5,8 +5,9 @@ import './StoriesItem.scss';
 
 export default class StoriesItem extends React.Component {
     render() {
+        console.log('StoriesItem', this.props);
         let {title, images, id} = this.props.story;
-        let url = '/story/' + id;
+        let url = '/story/' + id + (this.props.themeId? '?themeId=' + this.props.themeId : '');
         return (
             <div className="storiesItem">
                 <Link to={url} className="storiesItem-link">
