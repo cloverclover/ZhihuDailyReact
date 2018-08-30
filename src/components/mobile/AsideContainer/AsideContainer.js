@@ -2,6 +2,7 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 
 import './AsideContainer.scss';
+import defaultIcon from './默认头像.jpg';
 
 export default class AsideContainer extends React.Component {
     constructor() {
@@ -63,11 +64,19 @@ export default class AsideContainer extends React.Component {
         let themeList = this.props.themeList.map(function(item) {
             return <li key={item.id}><NavLink to={'/theme/' + item.id} activeClassName="active" className="asideContainer-link">{item.name}</NavLink></li>
         });
-        let clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
         return (
             <div className="asideContainer" style={this.props.isAsideShow? containerStyle : null}>
                 <div className="asideContainer-wrapper">
-                    <div className="asideContainer-header"></div>
+                    <div className="asideContainer-header">
+                        <div className="asideContainer-header-login">
+                            <img src={defaultIcon} className="asideContainer-header-login-icon" />
+                            <div className="asideContainer-header-login-tip">请登录</div>
+                        </div>
+                        <div className="asideContainer-header-tool">
+                            <div className="asideContainer-header-tool-collection">我的收藏</div>
+                            <div className="asideContainer-header-tool-download">离线下载</div>
+                        </div>
+                    </div>
                     <div className="asideContainer-nav-wrapper">
                         <ul className="asideContainer-nav"   onClick={() => {this.props.handleShowMore(false)}}>
                             <li>

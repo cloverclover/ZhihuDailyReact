@@ -20,6 +20,65 @@
             width: 100%;
             height: px2rem(332px);
             background-color: #00a2ed;
+            position: relative;
+            overflow: hidden;
+            .asideContainer-header-login {
+                display: flex;
+                align-items: center;
+                margin-top: px2rem(30px);
+                margin-left: px2rem(47px);
+                .asideContainer-header-login-icon {
+                    width: px2rem(100px);
+                    height: px2rem(100px);
+                    border-radius: 50%;
+
+                }
+                .asideContainer-header-login-tip {
+                    margin-left: px2rem(40px);
+                    color: #fff;
+                    font-size: px2rem(44px);
+                }
+            }
+            .asideContainer-header-tool {
+                width: 100%;
+                position: absolute;
+                bottom: px2rem(54px);
+                font-size: px2rem(40px);
+                color: #fff;
+                overflow: hidden;
+                .asideContainer-header-tool-collection {
+                    float: left;
+                    margin-left: px2rem(74px);
+                    &::before {
+                        display: inline-block;
+                        content: '';
+                        width: px2rem(40px);
+                        height: px2rem(40px);
+                        vertical-align: middle;
+                        margin-right: px2rem(74px);
+                        background-image: url(./收藏.png);
+                        background-position: center;
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                    }
+                }
+                .asideContainer-header-tool-download {
+                    float: right;
+                    margin-right: px2rem(120px);
+                    &::before {
+                        display: inline-block;
+                        content: '';
+                        width: px2rem(40px);
+                        height: px2rem(40px);
+                        vertical-align: middle;
+                        margin-right: px2rem(74px);
+                        background-image: url(./下载.png);
+                        background-position: center;
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                    }
+                }
+            }
         }
         .asideContainer-nav-wrapper {
             width: 100%;
