@@ -23,7 +23,7 @@ class PCIndex extends React.Component {
     */
     componentDidMount() {
         this.props.loadStory();
-        this.props.history.push('/news');
+        //this.props.history.push('/news');
     }
 
     render() {
@@ -31,7 +31,14 @@ class PCIndex extends React.Component {
             <div className="news_pc">
                 <Header />
                 <Switch>
-                    
+                    <Route path="/news/story/:id" render={({match}) => 
+                            <StoryContent 
+                            storyContent={this.props.storyContent} 
+                            id={match.params.id} 
+                            getStoryContent={this.props.getStoryContent}
+                            />
+                            }
+                    />
                     <Route path="/theme" render={
                             () => <ThemeContainer 
                             getTheme={this.props.getTheme} 
@@ -41,24 +48,15 @@ class PCIndex extends React.Component {
                             />
                     } />
 
-                    <Route path="/news/story/:id" render={({match}) => 
-                    <StoryContent 
-                    storyContent={this.props.storyContent} 
-                    id={match.params.id} 
-                    getStoryContent={this.props.getStoryContent}
-                    />
-                    }
-                    />
-
-                    <Route path="/news" render={() => 
-                    <NewsMain 
-                    currentStories={this.props.currentStories} 
-                    isToday={this.props.isToday} 
-                    hotStories={this.props.hotStories} 
-                    setNextDate={this.props.setNextDate}
-                    setPreviousDate={this.props.setPreviousDate}
-                    getHotStory={this.props.getHotStory}
-                    />} />
+                    <Route path="/" render={() => 
+                            <NewsMain 
+                            currentStories={this.props.currentStories} 
+                            isToday={this.props.isToday} 
+                            hotStories={this.props.hotStories} 
+                            setNextDate={this.props.setNextDate}
+                            setPreviousDate={this.props.setPreviousDate}
+                            getHotStory={this.props.getHotStory}
+                            />} />
                 </Switch>
             </div>
         );

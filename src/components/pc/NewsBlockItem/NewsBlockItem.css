@@ -16,6 +16,7 @@
 .newsblockitem_img {
     width: 100%;
     min-height: 150px;
+    display: block;
 }
 
 .newsblockitem_desc {

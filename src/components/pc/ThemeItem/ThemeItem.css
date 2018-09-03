@@ -14,6 +14,9 @@
 .themeItem-img {
     max-width: 100%;
     min-height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .themeItem-name {
     text-align: center;

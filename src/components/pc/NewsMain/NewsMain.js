@@ -33,20 +33,20 @@ export default class NewsMain extends React.Component {
                     <div className="main-nav">
                         <ul className="main-nav-wrapper">
                         <li>
-                            <NavLink to="/news" exact activeClassName="main-nav-active">新闻</NavLink>
+                            <NavLink to="/" exact activeClassName="main-nav-active">新闻</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/news/hotnews" activeClassName="main-nav-active">热门新闻</NavLink>
+                            <NavLink to="/hotnews" activeClassName="main-nav-active">热门新闻</NavLink>
                         </li>
                     </ul>
                     </div>
                     <div className="main-news">
                     <Switch>
-                        <Route path="/news" exact render={
-                            () => <NewsBlock stories={this.props.currentStories.stories} dateString={dateString} />
-                        } />
-                        <Route path="/news/hotnews" render={
+                        <Route path="/hotnews" render={
                             () => <HotNewsBlock hotStories={this.props.hotStories} getHotStory={this.props.getHotStory} />
+                        } />
+                        <Route path="/" render={
+                            () => <NewsBlock stories={this.props.currentStories.stories} dateString={dateString} />
                         } />
                     </Switch>
                     </div>

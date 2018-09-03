@@ -15,7 +15,7 @@ export default class ThemeItem extends React.Component {
         return (
             <div className="themeItem">
                 <Link to={url} className="themeItem-wrapper">
-                    <img src={thumbnail} alt={name} className="themeItem-img" />
+                    <img src={thumbnail} alt={'此图片无法加载，内容描述为：' + name} className="themeItem-img" />
                     <p className="themeItem-name">{name}</p>
                     <p className="themeItem-description">{description}</p>
                 </Link>
