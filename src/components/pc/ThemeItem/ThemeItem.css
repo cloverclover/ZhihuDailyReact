@@ -12,7 +12,7 @@
     background-color: #fff;
 }
 .themeItem-img {
-    max-width: 100%;
+    width: 100%;
     min-height: 260px;
     display: flex;
     align-items: center;

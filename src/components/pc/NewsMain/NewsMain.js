@@ -19,7 +19,7 @@ export default class NewsMain extends React.Component {
         return (
             <div className="main">
                 <div className="main-time">
-                    <Route path="/news" exact render={
+                    <Route path="/" exact render={
                         () => (
                             <div className="main-time-wrapper">
                                 <div className="main-before" onClick={this.props.setPreviousDate}>前一天</div>
