@@ -1,3 +1,4 @@
+import '../common/fetch';
 import {filterImage} from '../common/filter';
 
 import {getStoryExtra} from './comment';

@@ -1,3 +1,4 @@
+import 'whatwg-fetch';
 import {filterImage} from '../common/filter';
 import { baseUrl } from './common';
 

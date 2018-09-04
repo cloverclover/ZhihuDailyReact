@@ -1,3 +1,4 @@
+import '../common/fetch';
 import {filterImage} from '../common/filter';
 import {convertToLocalString} from '../common/time';
 import { baseUrl } from './common';
