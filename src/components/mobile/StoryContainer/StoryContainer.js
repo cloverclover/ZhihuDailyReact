@@ -53,8 +53,7 @@ export default class StoryContainer extends React.Component {
                     </div>
                 </div>
         );
-        let storyContentBody = (
-            <React.Fragment>
+        let storyContentHeader = (
                 <div className="storyContainer-image-wrapper">
                     <img src={image} className="storyContainer-image" />
                     <div className="storyContainer-image-mask">
@@ -62,8 +61,12 @@ export default class StoryContainer extends React.Component {
                         <p className="storyContainer-image-source">{image_source}</p>
                     </div>
                 </div>
+        );
+        let storyContentBody = (
+            <React.Fragment>
+                {image? storyContentHeader : null}
                 <div className="storyContainer-body" dangerouslySetInnerHTML={{__html: body}}></div>
-                <link rel="stylesheet" href={css} />
+                <style>{css}</style>
             </React.Fragment>
         );
         console.log('StoryContainer', this.props.storyContent.isLoading);

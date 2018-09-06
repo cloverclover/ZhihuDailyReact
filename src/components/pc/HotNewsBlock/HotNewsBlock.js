@@ -14,9 +14,9 @@ export default class HotNewsBlock extends React.Component {
     render() {
         let hotStories = this.props.hotStories.map(function(item, index) {
             if(index % 4 == 0) {
-                return <div className="main-news-item clear" key={item.news_id}><NewsBlockItem hotStory={item} /></div>
+                return <div className="main-news-item clear" key={item.id}><NewsBlockItem hotStory={item} /></div>
             } else {
-                return <div className="main-news-item" key={item.news_id}><NewsBlockItem hotStory={item} /></div>
+                return <div className="main-news-item" key={item.id}><NewsBlockItem hotStory={item} /></div>
             }
         });
         return (

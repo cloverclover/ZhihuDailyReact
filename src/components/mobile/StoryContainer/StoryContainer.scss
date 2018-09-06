@@ -110,7 +110,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.3);
+            background-color: rgba(0, 0, 0, 0.4);
             .storyContainer-title {
                 position: absolute;
                 bottom: px2rem(86px);
@@ -122,12 +122,15 @@
                 position: absolute;
                 bottom: px2rem(30px);
                 right: px2rem(48px);
-                color: #b4b4b4;
+                color: #b3b3b3;
                 font-size: px2rem(30px);
             }
         }
     }
     .storyContainer-body {
         width: 100%;
+        p {
+            margin: px2rem(16px) 0;
+        }
     }
 }

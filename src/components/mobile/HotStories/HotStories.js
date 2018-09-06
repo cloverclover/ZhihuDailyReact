@@ -103,7 +103,9 @@ export default class HotStories extends React.Component {
                 <li key={item.id} style={{width: deviceWidth}}>
                     <Link to={url} className="hotStories-link">
                         <img src={item.image} className="hotStories-image" />
-                        <p className="hotStories-title">{item.title}</p>
+                        <div className="hotStories-image-mask">
+                            <p className="hotStories-title">{item.title}</p>
+                        </div>
                     </Link>
                 </li>
             );

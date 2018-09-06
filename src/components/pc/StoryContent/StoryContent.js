@@ -30,6 +30,7 @@ export default class StoryContent extends React.Component {
                     <p class="storyContent-imageSource">{imageSource? '图片：' + imageSource : ''}</p>
                 </div>
                 <div dangerouslySetInnerHTML={{__html: body}} className="storyContent_body"></div>
+                <style>{css}</style>
             </div>
         );
         return (

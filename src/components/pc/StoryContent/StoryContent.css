@@ -34,3 +34,6 @@
 .storyContent_body {
     padding: 10px;
 }
+.storyContent_body p {
+    margin: 20px 0;
+}

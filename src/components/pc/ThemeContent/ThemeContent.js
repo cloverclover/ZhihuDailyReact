@@ -25,7 +25,7 @@ export default class ThemeContent extends React.Component {
             <React.Fragment>
                 <div className="themeContent-header-wrapper">
                     <div className="themeContent-header">
-                        <img className="themeContent-img" src={background} alt={name}/>
+                        <img className="themeContent-img" src={background}/>
                         <h1 className="themeContent-name">{name}</h1>
                         <p className="themeContent-description">{description}</p>
                         <p className="themeContent-imageSource">{image_source}</p>

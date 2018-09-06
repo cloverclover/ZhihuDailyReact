@@ -6,7 +6,8 @@ module.exports = {
     entry: path.resolve(__dirname, 'src/index.js'),
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        publicPath: '/'//配置写入html资源的公共目录
     },
     module: {
         rules: [

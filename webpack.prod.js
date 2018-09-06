@@ -29,5 +29,10 @@ module.exports = merge(common, {
         }),
         new uglifyjsWebpackPlugin(),
         new extractTextWebpackPlugin('styles/style.css')
-    ]
+    ],
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+    }
 })
