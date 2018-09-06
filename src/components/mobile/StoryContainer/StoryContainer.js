@@ -66,7 +66,7 @@ export default class StoryContainer extends React.Component {
             <React.Fragment>
                 {image? storyContentHeader : null}
                 <div className="storyContainer-body" dangerouslySetInnerHTML={{__html: body}}></div>
-                <link rel="stylesheet" href={css} />
+                <style>{css}</style>
             </React.Fragment>
         );
         console.log('StoryContainer', this.props.storyContent.isLoading);
